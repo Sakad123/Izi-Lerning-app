@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Izi Learning - Ինֆորմատիկան գրպանում</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a4d9e;
+            --secondary-color: #f0f2f5;
+            --accent-color: #ffc107;
+            --text-color: #2c3e50;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #052c5c 100%);
+            color: var(--white);
+            padding: 60px 5%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        .download-btn {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.6);
+            background-color: #ffcd38;
+        }
+
+        .version-info {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Installation Guide */
+        .install-guide {
+            background-color: var(--white);
+            padding: 60px 5% 40px;
+        }
+
+        .guide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .guide-step {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: center;
+            background: #fdfdfd;
+            padding: 30px;
+            border-radius: var(--border-radius, 15px);
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+        }
+
+        /* Чередуем расположение картинки и текста для динамики */
+        .guide-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-content {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .step-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .step-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #f0f2f5;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .security-note {
+            text-align: center;
+            padding: 20px;
+            background: #fff8e1;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 20px auto 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1c1c1e;
+            color: #777;
+            text-align: center;
+            padding: 30px;
+            margin-top: auto;
+        }
+
+        /* Mobile Mockup (CSS only) */
+        .phone-mockup {
+            width: 200px;
+            height: 400px;
+            border: 8px solid #333;
+            border-radius: 30px;
+            background: #fff;
+            margin: 30px auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 20px;
+            background: #333;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50%" x="50%" text-anchor="middle" fill="%230a4d9e" font-family="sans-serif" font-weight="bold" font-size="20">Izi Learning</text></svg>') center no-repeat;
+            background-color: #f0f2f5;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .guide-step, .guide-step:nth-child(even) {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* Language Selector */
+        #lang-select {
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            margin-right: 15px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Izi Learning</a>
+        <div style="display: flex; align-items: center;">
+            <select id="lang-select">
+                <option value="am">🇦🇲 Հայերեն</option>
+                <option value="ru">🇷🇺 Русский</option>
+                <option value="en">🇺🇸 English</option>
+            </select>
+            <a href="#download" class="download-btn" style="padding: 10px 20px; font-size: 1rem;" data-i18n="header_download">Ներբեռնել</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 data-i18n="hero_title">Սովորիր ինֆորմատիկան<br>հեշտ և հետաքրքիր:</h1>
+        <p data-i18n="hero_desc">Ինտերակտիվ դասընթացներ 5-8-րդ դասարանների համար, թեստեր, նվաճումներ և խելացի օգնական AI-ի հիման վրա:</p>
+        
+        <div class="phone-mockup">
+            <div class="phone-screen"></div>
+        </div>
+
+        <a href="izilearning.apk" class="download-btn" id="download" download>
+            <i class="fab fa-android"></i> <span data-i18n="hero_download_btn">Ներբեռնել APK</span>
+        </a>
+        <p class="version-info" data-i18n="version_info">Տարբերակ 1.0.0 | Android 5.0+ | Անվճար</p>
+    </section>
+
+    <section class="features">
+        <h2 data-i18n="features_title">Ինչու՞ ներբեռնել:</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-brain feature-icon"></i>
+                <h3 data-i18n="feature_1_title">Խելացի ուսուցում</h3>
+                <p data-i18n="feature_1_desc">Ներկառուցված Gemini AI-ն կբացատրի ցանկացած բարդ թեմա պարզ բառերով և կստեղծի նոր խնդիրներ:</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-gamepad feature-icon"></i>
+                <h3 data-i18n="feature_2_title">Գեյմիֆիկացիա</h3>
+                <p data-i18n="feature_2_desc">Ստացիր նվաճումներ, բացիր նոր մակարդակներ և մրցիր ինքդ քեզ հետ: Ուսումը որպես խաղ:</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-wifi feature-icon"></i>
+                <h3 data-i18n="feature_3_title">Աշխատում է օֆլայն</h3>
+                <p data-i18n="feature_3_desc">Ներբեռնիր մեկ անգամ և սովորիր որտեղ ուզում ես, նույնիսկ առանց ինտերնետի (բացի AI գործառույթներից):</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="install-guide">
+        <div class="guide-container">
+            <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 40px;" data-i18n="guide_title">4 պարզ քայլ տեղադրման համար</h2>
+            
+            <div class="guide-step">
+                <div class="step-content">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3 data-i18n="step_1_title">Ներբեռնեք ֆայլը</h3>
+                        <p data-i18n="step_1_desc">Սեղմեք մեծ դեղին «Ներբեռնել APK» կոճակը: Ձեր բրաուզերը կարող է հաստատում պահանջել: Սեղմեք <strong>«Ներբեռնել»</strong> կամ <strong>«OK»</strong>:</p>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.ibb.co/6r01Y7v/step1-download-confirm.png" alt="Подтверждение скачивания APK">
+                </div>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-content">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3 data-i18n="step_2_title">Թույլատրեք տեղադրումը</h3>
+                        <p data-i18n="step_2_desc">Ներբեռնելուց հետո բացեք ֆայլը: Android-ը անվտանգության նկատառումներով կարգելափակի տեղադրումը: Կհայտնվի պատուհան, որտեղ պետք է սեղմել <strong>«Կարգավորումներ»</strong>: Բացված մենյուում ակտիվացրեք <strong>«Թույլատրել տեղադրումը այս աղբյուրից»</strong>:</p>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.ibb.co/bQdF5mH/step2-allow-source.png" alt="Разрешение на установку из неизвестных источников">
+                </div>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-content">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3 data-i18n="step_3_title">Google Play Պաշտպանություն</h3>
+                        <p data-i18n="step_3_desc">Եթե հայտնվի <strong>«Արգելափակված է Play Պաշտպանության կողմից»</strong> պատուհանը, մի անհանգստացեք: Սա ստանդարտ զգուշացում է Google Play-ից դուրս հավելվածների համար: Սեղմեք <strong>«Մանրամասն»</strong> (կամ սլաքը), ապա ընտրեք <strong>«Միևնույն է տեղադրել»</strong>:</p>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.ibb.co/hR0mP2m/step3-play-protect.png" alt="Обход блокировки Google Play Protect">
+                </div>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-content">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3 data-i18n="step_4_title">Տեղադրեք և սովորեք:</h3>
+                        <p data-i18n="step_4_desc">Վերադարձեք հետ, և կտեսնեք տեղադրման էկրանը: Սեղմեք <strong>«Տեղադրել»</strong> կոճակը: Մի քանի վայրկյանից Izi Learning հավելվածը կհայտնվի ձեր հեռախոսի մենյուում: Պատրաստ է:</p>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <img src="https://i.ibb.co/yYyL9hV/step4-install-final.png" alt="Экран установки приложения">
+                </div>
+            </div>
+
+            <div class="security-note">
+                <p data-i18n="security_note"><strong>Կարևոր է.</strong> Անհայտ աղբյուրներից տեղադրման թույլտվությունը պահանջվում է միայն մեկ անգամ: Մեր հավելվածը անվտանգ է և չի պարունակում վիրուսներ:</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p data-i18n="footer_rights">&copy; 2026 Izi Learning. Բոլոր իրավունքները պաշտպանված են:</p>
+        <p style="font-size: 0.8em; margin-top: 10px;" data-i18n="footer_sub">Ստեղծված է ❤️ ուսանողների համար</p>
+    </footer>
+
+    <script>
+        const i18n = {
+            am: {
+                page_title: "Ներբեռնել Izi Learning - Ինֆորմատիկան գրպանում",
+                header_download: "Ներբեռնել",
+                hero_title: "Սովորիր ինֆորմատիկան<br>հեշտ և հետաքրքիր:",
+                hero_desc: "Ինտերակտիվ դասընթացներ 5-8-րդ դասարանների համար, թեստեր, նվաճումներ և խելացի օգնական AI-ի հիման վրա:",
+                hero_download_btn: "Ներբեռնել APK",
+                version_info: "Տարբերակ 1.0.0 | Android 5.0+ | Անվճար",
+                features_title: "Ինչու՞ ներբեռնել:",
+                feature_1_title: "Խելացի ուսուցում",
+                feature_1_desc: "Ներկառուցված Gemini AI-ն կբացատրի ցանկացած բարդ թեմա պարզ բառերով և կստեղծի նոր խնդիրներ:",
+                feature_2_title: "Գեյմիֆիկացիա",
+                feature_2_desc: "Ստացիր նվաճումներ, բացիր նոր մակարդակներ և մրցիր ինքդ քեզ հետ: Ուսումը որպես խաղ:",
+                feature_3_title: "Աշխատում է օֆլայն",
+                feature_3_desc: "Ներբեռնիր մեկ անգամ և սովորիր որտեղ ուզում ես, նույնիսկ առանց ինտերնետի (բացի AI գործառույթներից):",
+                guide_title: "4 պարզ քայլ տեղադրման համար",
+                step_1_title: "Ներբեռնեք ֆայլը",
+                step_1_desc: "Սեղմեք մեծ դեղին «Ներբեռնել APK» կոճակը: Ձեր բրաուզերը կարող է հաստատում պահանջել: Սեղմեք <strong>«Ներբեռնել»</strong> կամ <strong>«OK»</strong>:",
+                step_2_title: "Թույլատրեք տեղադրումը",
+                step_2_desc: "Ներբեռնելուց հետո բացեք ֆայլը: Android-ը անվտանգության նկատառումներով կարգելափակի տեղադրումը: Կհայտնվի պատուհան, որտեղ պետք է սեղմել <strong>«Կարգավորումներ»</strong>: Բացված մենյուում ակտիվացրեք <strong>«Թույլատրել տեղադրումը այս աղբյուրից»</strong>:",
+                step_3_title: "Google Play Պաշտպանություն",
+                step_3_desc: "Եթե հայտնվի <strong>«Արգելափակված է Play Պաշտպանության կողմից»</strong> պատուհանը, մի անհանգստացեք: Սա ստանդարտ զգուշացում է Google Play-ից դուրս հավելվածների համար: Սեղմեք <strong>«Մանրամասն»</strong> (կամ սլաքը), ապա ընտրեք <strong>«Միևնույն է տեղադրել»</strong>:",
+                step_4_title: "Տեղադրեք և սովորեք:",
+                step_4_desc: "Վերադարձեք հետ, և կտեսնեք տեղադրման էկրանը: Սեղմեք <strong>«Տեղադրել»</strong> կոճակը: Մի քանի վայրկյանից Izi Learning հավելվածը կհայտնվի ձեր հեռախոսի մենյուում: Պատրաստ է:",
+                security_note: "<strong>Կարևոր է.</strong> Անհայտ աղբյուրներից տեղադրման թույլտվությունը պահանջվում է միայն մեկ անգամ: Մեր հավելվածը անվտանգ է և չի պարունակում վիրուսներ:",
+                footer_rights: "&copy; 2026 Izi Learning. Բոլոր իրավունքները պաշտպանված են:",
+                footer_sub: "Ստեղծված է ❤️ ուսանողների համար"
+            },
+            ru: {
+                page_title: "Скачать Izi Learning - Информатика в кармане",
+                header_download: "Скачать",
+                hero_title: "Изучай информатику<br>легко и интересно!",
+                hero_desc: "Интерактивные курсы для 5-8 классов, тесты, достижения и умный помощник на базе ИИ.",
+                hero_download_btn: "Скачать APK",
+                version_info: "Версия 1.0.0 | Android 5.0+ | Бесплатно",
+                features_title: "Почему стоит скачать?",
+                feature_1_title: "Умное обучение",
+                feature_1_desc: "Встроенный ИИ Gemini объяснит любую сложную тему простыми словами и сгенерирует новые задачи.",
+                feature_2_title: "Геймификация",
+                feature_2_desc: "Получай достижения, открывай новые уровни и соревнуйся с самим собой. Учеба как игра!",
+                feature_3_title: "Работает оффлайн",
+                feature_3_desc: "Скачай один раз и учись где угодно, даже без интернета (кроме функций ИИ).",
+                guide_title: "4 простых шага для установки",
+                step_1_title: "Скачайте файл",
+                step_1_desc: "Нажмите на большую желтую кнопку \"Скачать APK\". Ваш браузер может запросить подтверждение на скачивание файла. Нажмите <strong>\"Скачать\"</strong> или <strong>\"ОК\"</strong>.",
+                step_2_title: "Разрешите установку",
+                step_2_desc: "После скачивания откройте файл. Android в целях безопасности заблокирует установку. Появится окно, в котором нужно нажать <strong>'Настройки'</strong>. В открывшемся меню активируйте переключатель <strong>'Разрешить установку из этого источника'</strong>.",
+                step_3_title: "Google Play Защита",
+                step_3_desc: "Если появится окно <strong>\"Заблокировано Play Защитой\"</strong>, не пугайтесь. Это стандартное предупреждение для приложений не из Google Play. Нажмите <strong>\"Подробнее\"</strong> (или стрелочку), а затем выберите <strong>\"Всё равно установить\"</strong>.",
+                step_4_title: "Установите и учитесь!",
+                step_4_desc: "Вернитесь назад, и вы увидите экран установки. Нажмите кнопку <strong>'Установить'</strong>. Через несколько секунд приложение Izi Learning появится в меню вашего телефона. Готово!",
+                security_note: "<strong>Важно:</strong> Разрешение на установку из неизвестных источников требуется только один раз. Наше приложение безопасно и не содержит вирусов.",
+                footer_rights: "&copy; 2026 Izi Learning. Все права защищены.",
+                footer_sub: "Created with ❤️ for students"
+            },
+            en: {
+                page_title: "Download Izi Learning - Informatics in your pocket",
+                header_download: "Download",
+                hero_title: "Learn Informatics<br>easily and interestingly!",
+                hero_desc: "Interactive courses for grades 5-8, tests, achievements, and a smart AI assistant.",
+                hero_download_btn: "Download APK",
+                version_info: "Version 1.0.0 | Android 5.0+ | Free",
+                features_title: "Why download?",
+                feature_1_title: "Smart Learning",
+                feature_1_desc: "Built-in Gemini AI will explain any complex topic in simple words and generate new tasks.",
+                feature_2_title: "Gamification",
+                feature_2_desc: "Get achievements, unlock new levels, and compete with yourself. Learning as a game!",
+                feature_3_title: "Works Offline",
+                feature_3_desc: "Download once and learn anywhere, even without internet (except AI functions).",
+                guide_title: "4 simple steps to install",
+                step_1_title: "Download the file",
+                step_1_desc: "Click the big yellow 'Download APK' button. Your browser may ask for confirmation. Click <strong>'Download'</strong> or <strong>'OK'</strong>.",
+                step_2_title: "Allow installation",
+                step_2_desc: "After downloading, open the file. Android will block the installation for security reasons. A window will appear where you need to click <strong>'Settings'</strong>. In the menu that opens, activate <strong>'Allow from this source'</strong>.",
+                step_3_title: "Google Play Protect",
+                step_3_desc: "If the window <strong>'Blocked by Play Protect'</strong> appears, don't worry. This is a standard warning for apps outside Google Play. Click <strong>'More details'</strong> (or the arrow), then select <strong>'Install anyway'</strong>.",
+                step_4_title: "Install and learn!",
+                step_4_desc: "Go back, and you will see the installation screen. Click the <strong>'Install'</strong> button. In a few seconds, the Izi Learning app will appear in your phone's menu. Done!",
+                security_note: "<strong>Important:</strong> Permission to install from unknown sources is required only once. Our app is safe and contains no viruses.",
+                footer_rights: "&copy; 2026 Izi Learning. All rights reserved.",
+                footer_sub: "Created with ❤️ for students"
+            }
+        };
+
+        const langSelect = document.getElementById('lang-select');
+        
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            
+            // Обновляем все элементы с атрибутом data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    // Используем innerHTML, так как в некоторых строках есть теги (например, <br>, <strong>)
+                    element.innerHTML = i18n[lang][key];
+                }
+            });
+
+            // Сохраняем выбор пользователя (опционально, но удобно)
+            localStorage.setItem('download_page_lang', lang);
+        }
+
+        langSelect.addEventListener('change', (e) => {
+            changeLanguage(e.target.value);
+        });
+
+        // Функция для определения языка
+        function getPreferredLanguage() {
+            // 1. Сначала проверяем, сохранял ли пользователь выбор ранее
+            const saved = localStorage.getItem('download_page_lang');
+            if (saved && i18n[saved]) return saved;
+
+            // 2. Если нет, проверяем язык браузера
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            if (browserLang.startsWith('ru')) return 'ru';
+            if (browserLang.startsWith('en')) return 'en';
+            if (browserLang.startsWith('hy')) return 'am'; // 'hy' — код армянского языка в браузерах
+            
+            return 'am'; // 3. Если ничего не подошло, ставим армянский по умолчанию
+        }
+
+        // Инициализация
+        const initialLang = getPreferredLanguage();
+        langSelect.value = initialLang;
+        changeLanguage(initialLang);
+
+    </script>
+</body>
+</html>
